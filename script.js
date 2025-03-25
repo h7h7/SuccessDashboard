@@ -1,7 +1,7 @@
 // Odczyt z OpenSheet + zapis do Google Form bez CORS
 const GOOGLE_FORM_ACTION_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdGSbUCxz-9ZuMvQ0qvTM-0QO4wvMyj5y-iOcO3WjuUnnN31g/formResponse";
-const FORM_DAY_FIELD = "entry.1329650917";        // was wrong before
-const FORM_REFLECTION_FIELD = "entry.1903929725"; // was wrong before
+const FORM_DAY_FIELD = "entry.1329650917"; // Corrected mapping
+const FORM_REFLECTION_FIELD = "entry.1903929725"; // Corrected mapping
 const GOOGLE_DATA_JSON_URL = "https://opensheet.elk.sh/1mmT-N241s8owIc1_wKRaGvXQykTKnZhBOJaQk4uKHYM/PL";
 
 let sheetData = {};
@@ -39,7 +39,9 @@ function loadDay(day, box) {
   const row = sheetData[day];
   quote.textContent = row ? row.quote : "Brak cytatu.";
   affirmation.textContent = row ? row.affirmation : "Brak afirmacji.";
-  notes.value = row && row.reflection ? row.reflection : "";
+
+  const saved = localStorage.getItem(`reflection_day_${day}`);
+  notes.value = saved || (row && row.reflection ? row.reflection : "");
   notes.setAttribute("data-day", day);
 }
 
