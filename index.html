@@ -2,68 +2,38 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
-  <title>30 Dni z Napoleonem Hillem – Start</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #eef2f7;
-      padding: 20px;
-      text-align: center;
-    }
-    h1 {
-      margin-bottom: 40px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 15px;
-      justify-items: center;
-    }
-    .day-tile {
-      background-color: #ffffff;
-      border: 2px solid #ccc;
-      border-radius: 12px;
-      width: 100px;
-      height: 100px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 18px;
-      font-weight: bold;
-      text-decoration: none;
-      color: #333;
-      transition: background-color 0.3s;
-    }
-    .day-tile:hover {
-      background-color: #d3e0f0;
-    }
-    .completed {
-      background-color: #c1f0c1 !important;
-      border-color: #4CAF50;
-    }
-  </style>
+  <title>30 Dni z Napoleonem Hillem</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>🌟 30 Dni z Napoleonem Hillem</h1>
-  <div class="grid">
-    <!-- 30 tiles -->
-    <script>
-      for (let i = 1; i <= 30; i++) {
-        const day = `day${i}`;
-        const fileName = `refleksje/refleksja_dzien_${i}.txt`;
-
-        document.write(`
-          <a href="${day}.html" class="day-tile" id="tile-${i}">Dzień ${i}</a>
-        `);
-
-        fetch(fileName)
-          .then(response => {
-            if (response.ok) {
-              document.getElementById(`tile-${i}`).classList.add('completed');
-            }
-          });
-      }
-    </script>
+  <div id="day-grid-container">
+    <div id="day-grid"></div>
   </div>
+
+  <hr>
+
+  <div id="day-content">
+    <h2 id="day-title">Wybierz dzień</h2>
+    <div class="card">
+      <h3>Cytat dnia</h3>
+      <p id="quote"></p>
+    </div>
+    <div class="card">
+      <h3>Afirmacja</h3>
+      <p id="affirmation"></p>
+    </div>
+    <div class="card">
+      <h3>Zaklęcie</h3>
+      <p><strong>„Do 31 grudnia 2025 roku posiadam milion euro na moim koncie inwestycyjnym. Zarobiłem je tworząc treści w internecie. Daję ludziom wartość, a bogactwo wraca do mnie z wielu źródeł.”</strong></p>
+    </div>
+    <div class="card">
+      <h3>Twoja refleksja</h3>
+      <textarea id="notes" placeholder="Wpisz tutaj swoją refleksję..."></textarea>
+      <br>
+      <button onclick="saveReflection()">Zapisz</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

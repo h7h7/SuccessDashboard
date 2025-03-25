@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  #day-grid-container {
+    padding: 10px;
+  }
+  
+  #day-grid {
+    display: grid;
+    grid-template-columns: repeat(30, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 6px;
+    justify-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .day-box {
+    width: 40px;
+    height: 40px;
+    background-color: #e0e0e0;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .day-box:hover {
+    background-color: #d0d0ff;
+  }
+  
+  
+  .day-box.completed {
+    background-color: #a0e7a0;
+    border: 2px solid #4CAF50;
+  }
+  
+  .day-box.active {
+    box-shadow: 0 0 8px #2196F3;
+    background-color: #2196F3;
+    color: #fff;
+  }
+
+  hr {
+    margin: 20px 0;
+  }
+  
+  .card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+  }
+  
+  #notes {
+    width: 100%;
+    height: 120px;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
