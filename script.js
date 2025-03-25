@@ -1,5 +1,7 @@
-// Dane z OpenSheet (publiczny JSON bez CORS)
-const GOOGLE_WEBAPP_URL = "https://script.google.com/macros/s/AKfycby2Wb1x8R8jgzzod_BIpD73gETM_KvBfPCa1X3-w3lGpchnhKYAw8yGqWbjfVBlxAtZ0Q/exec";
+// Odczyt z OpenSheet + zapis do Google Form bez CORS
+const GOOGLE_FORM_ACTION_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdGSbUCxz-9ZuMvQ0qvTM-0QO4wvMyj5y-iOcO3WjuUnnN31g/formResponse";
+const FORM_DAY_FIELD = "entry.1903929725";
+const FORM_REFLECTION_FIELD = "entry.1329650917";
 const GOOGLE_DATA_JSON_URL = "https://opensheet.elk.sh/1mmT-N241s8owIc1_wKRaGvXQykTKnZhBOJaQk4uKHYM/PL";
 
 let sheetData = {};
@@ -53,14 +55,17 @@ function saveReflection() {
     tile.classList.add("completed");
   }
 
-  fetch(GOOGLE_WEBAPP_URL, {
+  // Zapisz do Google Form
+  const formData = new FormData();
+  formData.append(FORM_DAY_FIELD, day);
+  formData.append(FORM_REFLECTION_FIELD, reflection);
+
+  fetch(GOOGLE_FORM_ACTION_URL, {
     method: "POST",
-    body: JSON.stringify({ day, reflection }),
-    headers: { "Content-Type": "application/json" }
+    mode: "no-cors",
+    body: formData
   })
-    .then(response => response.text())
-    .then(data => {
-      console.log("Zapisano w arkuszu:", data);
+    .then(() => {
       const confirmation = document.createElement("span");
       confirmation.textContent = " ✅";
       confirmation.style.marginLeft = "10px";
@@ -69,8 +74,8 @@ function saveReflection() {
       setTimeout(() => confirmation.remove(), 2000);
     })
     .catch(error => {
-      console.error("Błąd zapisu do arkusza:", error);
-      alert("Błąd zapisu do Google Sheets. Refleksja zapisana lokalnie.");
+      console.error("Błąd zapisu do Google Form:", error);
+      alert("Błąd zapisu do formularza Google. Refleksja zapisana lokalnie.");
     });
 }
 
