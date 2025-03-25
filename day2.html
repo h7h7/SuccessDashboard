@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Poranka – Napoleon Hill</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+    }
+    .card {
+      background-color: white;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin-top: 10px;
+      border-radius: 8px;
+      padding: 10px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌅 Dashboard Poranka – Dzień 2</h1>
+
+  <div class="card">
+    <h2>📖 Cytat dnia (Napoleon Hill)</h2>
+    <p><em>"Wiara to chemia umysłu, która nadaje życie impulsowi myślowemu."</em></p>
+  </div>
+
+  <div class="card">
+    <h2>🔮 Afirmacja dnia</h2>
+    <p><strong>„Z pełną wiarą wierzę, że osiągnę mój cel finansowy. Moja podświadomość przyjmuje to jako fakt i działa na moją korzyść.”</strong></p>
+    <button onclick="speak(this.previousElementSibling.innerText)">Odtwórz głosowo</button>
+  </div>
+
+  <div class="card">
+    <h2>🧠 Przypomnienie: Czy zapisałeś 2x ręcznie swoje zaklęcie?</h2>
+    <p><strong>„Do 31 grudnia 2025 roku posiadam milion euro na moim koncie inwestycyjnym. Zarobiłem je tworząc treści w internecie. Daję ludziom wartość, a bogactwo wraca do mnie z wielu źródeł.”</strong></p>
+  </div>
+
+  <div class="card">
+    <h2>📝 Refleksja / Notatki z dnia 2</h2>
+    <textarea id="notes" placeholder="Wpisz tutaj swoją refleksję lub plan na dziś..."></textarea>
+    <br>
+    <button onclick="saveToFile()">Zapisz do pliku TXT</button>
+  </div>
+
+  <div class="card">
+    <h2>📅 Postęp: Dzień 2 z 30</h2>
+  </div>
+
+  <script>
+    function speak(text) {
+      const synth = window.speechSynthesis;
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'pl-PL';
+      synth.speak(utterance);
+    }
+
+    function saveToFile() {
+      const text = document.getElementById("notes").value;
+      const blob = new Blob([text], { type: "text/plain" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "refleksja_dzien_2.txt";
+      link.click();
+    }
+  </script>
+</body>
+</html>
