@@ -1,6 +1,6 @@
-// Nowy URL do danych JSON bez .setHeader()
+// Dane z OpenSheet (publiczny JSON bez CORS)
 const GOOGLE_WEBAPP_URL = "https://script.google.com/macros/s/AKfycby2Wb1x8R8jgzzod_BIpD73gETM_KvBfPCa1X3-w3lGpchnhKYAw8yGqWbjfVBlxAtZ0Q/exec";
-const GOOGLE_DATA_JSON_URL = "https://script.google.com/macros/s/AKfycbyQLh60qAMv4oclJrMNxo0-ZPJbG6MsUNwQ5KSs0OHE6xPZeSCj1YZ1JZ2DpWr1oPY_dA/exec";
+const GOOGLE_DATA_JSON_URL = "https://opensheet.elk.sh/1mmT-N241s8owIc1_wKRaGvXQykTKnZhBOJaQk4uKHYM/PL";
 
 let sheetData = {};
 
