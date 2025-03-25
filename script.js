@@ -1,6 +1,6 @@
-// Nowy URL do danych w formacie JSON
+// Nowy URL do danych JSON z obsługą CORS
 const GOOGLE_WEBAPP_URL = "https://script.google.com/macros/s/AKfycby2Wb1x8R8jgzzod_BIpD73gETM_KvBfPCa1X3-w3lGpchnhKYAw8yGqWbjfVBlxAtZ0Q/exec";
-const GOOGLE_DATA_JSON_URL = "https://script.google.com/macros/s/AKfycbwdS-18Vk4khHP00eY0k0zTXryxUP2EKRxe6N1pVZ3AfTkCHvaMRxMMRVxmMjfcF-axpQ/exec";
+const GOOGLE_DATA_JSON_URL = "https://script.google.com/macros/s/AKfycbwNKXMg18DOhDJRpyXnNZgN1p2KL2pZjg9XiSy7YIdi6u9k10s55rJTr4k80cxx7piuSQ/exec";
 
 let sheetData = {};
 
